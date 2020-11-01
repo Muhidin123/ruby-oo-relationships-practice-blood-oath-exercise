@@ -37,11 +37,24 @@ class Follower
     end
 
     
-      def cults
+    def cults
         blood_oaths.map do |blood_oath|
-          blood_oath.cult
-        end 
+            blood_oath.cult
+        end
     end
+
+    def self.most_active
+    #returns the `Follower` instance who has joined the most cults
+        follower_activity = self.all.map do |follower|
+            {follower => follower.cults.length}
+        end
+        sorted = follower_activity.sort_by {|follower| follower.values[0]}.reverse
+        sorted[0]
+    end
+
+    def self.top_ten
+    end
+
 
 
 

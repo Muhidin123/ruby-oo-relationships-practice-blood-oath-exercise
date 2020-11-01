@@ -19,8 +19,11 @@ follower_3 = Follower.new("Mike", 18, "Follower 3")
 
 ###if to create new BloodOath (add follower to cult)
 
-#bloodoath_1 = BloodOath.new(follower_1, a)
-#bloodoath_2 = BloodOath.new(follower_3, d)
+bloodoath_1 = BloodOath.new(follower_1, a)
+bloodoath_2 = BloodOath.new(follower_3, a)
+bloodoath_3 = BloodOath.new(follower_2, c)
+bloodoath_4 = BloodOath.new(follower_3, c)
+bloodoath_5 = BloodOath.new(follower_3, d)
 
 
 

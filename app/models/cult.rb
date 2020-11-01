@@ -13,6 +13,10 @@ class Cult
         @@all << self
     end
 
+    def all_cult_members        ### ==> helper method members
+        BloodOath.all.select {|members| members.cult == self}
+    end
+
     def self.all
         @@all
     end
@@ -22,7 +26,7 @@ class Cult
     end
 
     def cult_population
-        BloodOath.all.select {|all_cults| all_cults.cult == self}.count
+        all_cult_members.count
     end
 
     def self.find_by_name(name)
@@ -36,6 +40,31 @@ class Cult
     def self.find_by_founding_year(year)
         Cult.all.select {|all_cults| all_cults.founding_year == year}
     end
+
+
+    def average_age
+        all_cult_members.map {|members| members.follower.age}.inject(:+) / all_cult_members.count
+    end
+
+    def my_followers_mottos
+        motos = all_cult_members.map {|members| members.follower.life_moto}
+        return motos.each do |moto| puts moto
+        end
+    end
+
+    def followers
+        all_cult_members.map {|members| members.follower}
+    end
+
+    def self.least_popular
+        self.all.min_by do |cult|
+            cult.followers.length
+        end
+    end
+
     
+    
+            
+
 
 end
